@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+	"http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+	<meta http-equiv="Content-type" content="text/html; charset=utf-8"/>
+	<title>iSklep</title>
+	<meta name="viewport" content="width=900" />
+	<%= stylesheet_link_tag 'desktop', 'facebox' %>
+	<%= javascript_include_tag :defaults, 'facebox', 'flower_bubble' %>
+</head>
+
+<body>
+	<div class="header">
+		<div class="center">
+			<h1>iSklep</h1>
+			<ul>
+				<%= tab_for 'Produkty', :produkty, produkty_path %>
+				<%= tab_for 'Zamówienia', :zamowienia, kategorie_path %>
+				<%= tab_for 'Użytkownicy', :uzytkownicy, kategorie_path %>
+				<%= tab_for 'Recenzje', :recenzje, kategorie_path %>
+				<%= tab_for 'Ustawienia', :ustawienia, ustawienia_path %>
+			</ul>
+			<div style="clear:both"></div>
+		</div>
+		<div class="menu">
+			Witaj <%= self.current_uzytkownik.login.capitalize %>
+			<%= link_to 'Pokaż sklep', root_path, :target => '_blank'  %>
+			 | 
+			<%= link_to 'Wyloguj', logout_path  %>
+		</div>
+	</div>
+	
+	<%= yield :submenu %>
+	
+	<%- flash.each do |typ, msg| -%>
+		<div class="<%= typ %>">
+			<%= msg %>
+		</div>
+	<%- end -%>
+	
+	<%= yield %>
+	
+	<div class="footer">
+		<b>Autor:</b> <a href="http://macbury.jogger.pl">MacBury</a>. <b>Wersja:</b> 0.1. <b>Powered</b> by Ruby on Rails
+	</div>
+</body>
+</html>

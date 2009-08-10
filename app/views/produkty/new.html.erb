@@ -1,0 +1,54 @@
+<%= produkty_submenu %>
+<div class="content">
+	<h1><%= @h1 %></h1>
+
+	<% form_for(@produkt, :html => { :multipart => true }) do |f| %>
+		<%= f.error_messages %>
+		
+		<p>
+	    <%= f.label :nazwa %><br />
+	    <%= f.text_field :nazwa %>
+	  </p>
+	  <p>
+	    <%= f.label :opis %>
+			<a href="javascript:$.post('<%= preview_produkty_path %>',{ data: $('#produkt_opis').val(), authenticity_token: '<%= form_authenticity_token %>' }, null, 'script');" style="float:right">Podgląd</a>
+			<br />
+	    <%= f.text_area :opis -%>
+	  </p>
+		<table>
+			<tr>
+				<td>
+			    <%= f.label :kategoria_id, 'Kategoria' %>
+					<%= f.select :kategoria_id, options_for_kategorie, :include_blank => '[ Brak ]' %>
+			  </td>
+				<td>
+					<%= f.label :producent_id, 'Producent' %>
+					<%= f.select :producent_id, Producent.all.map { |p| [p.nazwa, p.id] }, :include_blank => '[ Brak ]' %>
+				</td>
+				<td style="padding-left: 34px; background: transparent url('<%= @produkt.zdjecie.url(:mini) %>') no-repeat left center">
+					<%= f.label :zdjecie %>
+					<%= f.file_field :zdjecie %>
+				</td>
+			</tr>
+		</table>
+		<table>
+			<tr>
+				<td>
+					<h3>Galeria:</h3>
+					<div id="galeria">
+						<%= render :partial => "zdjecie", :collection => @produkt.zdjecia %>
+					</div>
+					<%= add_zdjecie_link 'Dodaj zdjęcie' %>
+				</td>
+				<td>
+					<h3>Wersje:</h3>
+				</td>
+			</tr>
+		</table>
+	  <p>
+	    <%= f.submit "Zapisz" %> <%= admin_delete_button @produkt %>
+	  </p>
+	<% end %>
+
+	
+</div>

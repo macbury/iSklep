@@ -1,0 +1,47 @@
+body { 
+	background: #006CEB;
+	color: #666; text-align: center;
+	font-family: arial, sans-serif; 
+}
+div.dialog {
+	background: #fff;
+	width: 25em;
+	padding: 10px 15px;
+	margin: 4em auto 0 auto;
+	-webkit-border-radius: 5px;
+}
+
+input[type="submit"],input[type="button"] {
+	padding: 5px 10px;
+	background: #006ceb;
+	font-weight: bold;
+	color: white;
+	-webkit-border-radius: 5px;
+	border: none;
+}
+
+.register label {
+	float: left;
+	width: 100px;
+	text-align: right;
+	margin-right: 5px;
+}
+
+.notice {
+	color: green;
+}
+
+.error {
+	color: red;
+}
+
+.bladMsg {
+	color:red;
+}
+
+h1 { font-size: 100%; color: #f00; line-height: 1.5em; }
+
+a {
+	text-decoration: none;
+	font-size: 11px;
+}

@@ -1,0 +1,45 @@
+<%= ustawienia_submenu %>
+<div class="content">
+	<% form_tag ustawienia_path, :method => :post do |f| %>
+		<p>
+			<%= label 'strona', 'nazwa' %><br />
+			<%= config_text_field 'strona', 'nazwa' %>
+		</p>
+		<p>
+			<%= label 'strona', 'slogan'%><br />
+			<%= config_text_field 'strona', 'slogan' %>
+		</p>
+		<p>
+			<%= label 'strona', 'slowa_kluczowe', 'Słowa kluczowe'%><br />
+			<%= config_text_field 'strona', 'slowa_kluczowe' %>
+		</p>
+		<p>
+			<%= label 'strona', 'opis' %><br />
+			<%= config_text_area 'strona', 'opis' %>
+		</p>
+		<p>
+			<%= label 'strona', 'skorka', 'Skórka' %><br />
+			<%= config_select 'strona', 'skorka', ['vogue'] %>
+		</p>
+		<h1>Dane adresowe</h1>
+		<table>
+			<tr>
+				<td>
+					<%= label 'informacje', 'wojewodztwo', 'Województwo' %><br />
+					<%= config_select 'informacje', 'wojewodztwo', wojewodztwa_options_for_select %>
+				</td>
+				<td>
+					<%= label 'informacje', 'miasto' %><br />
+					<%= config_text_field 'informacje', 'miasto' %>
+				</td>
+				<td>
+					<%= label 'informacje', 'adres' %><br />
+					<%= config_text_field 'informacje', 'adres' %>
+				</td>
+			</tr>
+		</table>
+		<p>
+			<%= submit_tag 'Zapisz' %>
+		</p>
+	<% end %>
+</div>

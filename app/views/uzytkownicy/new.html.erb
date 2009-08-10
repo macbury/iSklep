@@ -1,0 +1,23 @@
+<div class="content">
+	<h2>Rejestracja</h2>
+	<% @uzytkownik.password = @uzytkownik.password_confirmation = nil %>
+
+	<%= error_messages_for :uzytkownik %>
+	
+	<% form_for :uzytkownik, :url => uzytkownicy_path do |f| -%>
+	<p><%= f.label :login %><br/>
+	<%= f.text_field :login %></p>
+
+	<p><%=  f.label :email %><br/>
+	<%= f.text_field :email %></p>
+
+	<p><%= f.label :password, 'Hasło' %><br/>
+	<%= f.password_field :password %></p>
+
+	<p><%= f.label :password_confirmation, 'Powtórz hasło' %><br/>
+	<%= f.password_field :password_confirmation %></p>
+	
+	<p><%= submit_tag 'Rejestruj' %></p>
+	<% end -%>
+
+</div>

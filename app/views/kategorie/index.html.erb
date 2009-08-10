@@ -1,0 +1,18 @@
+<%= produkty_submenu %>
+<div class="content">
+	<h1>Kategorie <%= admin_button 'Dodaj katgorie', new_kategoria_path %></h1>
+	<ul id="kategorie">
+		<% for kategoria in Kategoria.find_roots(true) %>
+			<li><b><%= link_to kategoria.nazwa, edit_kategoria_path(kategoria) %></b></li>
+			<% unless kategoria.kategorie.empty? %>
+
+				<ul>
+					<% for subkategoria in kategoria.kategorie %>
+						<li><%= link_to subkategoria.nazwa, edit_kategoria_path(subkategoria) %></li>
+					<% end %>
+				</ul>
+
+			<% end %>
+		<% end %>
+	</ul>
+</div>

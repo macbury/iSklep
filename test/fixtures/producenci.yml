@@ -1,0 +1,11 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  nazwa: MyString
+  permalink: MyString
+  produkty_count: 1
+
+two:
+  nazwa: MyString
+  permalink: MyString
+  produkty_count: 1

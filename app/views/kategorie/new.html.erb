@@ -1,0 +1,19 @@
+<%= produkty_submenu %>
+<div class="content">
+	<h1><%= @naglowek %></h1>
+	<% form_for @kategoria do |f| %>
+		<%= f.error_messages %>
+		<p>
+			<%= f.label :nazwa %><br/>
+			<%= f.text_field :nazwa %>
+		</p>
+		<p>
+			<%= f.label :parent_id, 'Zagnieżdżenie' %><br/>
+			<%= f.select :parent_id, Kategoria.find_roots.map { |k| [k.nazwa, k.id] }, {:include_blank => '[ Nowa kategoria główna ]'} %>
+		</p>
+		<p>
+			<%= f.submit 'Zapisz' %>  
+			<%= link_to('Usuń', @kategoria, :confirm => 'Czy jesteś pewien?', :method => :delete) unless @kategoria.new_record? %>
+		</p>
+	<% end %>
+</div>

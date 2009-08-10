@@ -1,0 +1,126 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+	<title>{{ sklep.nazwa }} - {{ produkt.nazwa }}</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+	<meta name="author" content="Sofamade, Ltd." />
+	<meta name="copyright" content="Sofamade, Ltd." />
+	{{ sklep.head }}
+	
+	<link href="/stylesheets/facebox.css" media="screen" rel="stylesheet" type="text/css" />
+	<script src="/javascripts/jquery.js" type="text/javascript"></script>
+	<script src="/javascripts/jquery-ui.js" type="text/javascript"></script>
+	<script src="/javascripts/facebox.js" type="text/javascript"></script>
+	
+	<script type="text/javascript" charset="utf-8">
+		$(document).ready(function(){
+			$('a[rel*=facebox]').facebox();
+		});
+	</script>
+
+	<!-- Visit http://vogue.sofamade.com for alternate color schemes -->
+	<link rel="stylesheet" href="/assets/stylesheet.css" type="text/css" media="screen" />
+	
+</head>
+
+<body>
+
+<div id="header">
+	<div class="container">
+		<div id="logo">
+			<h1><a href="/" title="{{ sklep.nazwa }}">{{ sklep.nazwa }}</a></h1>
+		</div>
+		<div id="navigation">
+			<ul id="navigate">
+				<li><a href="#">O Nas</a></li>
+				<li><a href="/">Produkty</a></li>
+				<li><a href="#">Koszyk</a></li>
+			</ul>
+		</div>
+	</div>
+</div>
+
+<div id="mini-header">
+	<div class="container">
+		<div id="shopping-cart">
+			<a href="/cart">Koszyk jest pusty</a>
+		</div>
+		<div id="search-box">
+			<form action="/search" method="get">
+				<input type="text" name="q" id="q" />
+				<input type="image" src="/assets/seek.png" value="Seek" id="seek" onclick="this.parentNode.submit(); return false;" />
+			</form>
+		</div>
+	</div>
+</div>
+
+<div id="layout">
+	<div class="container">
+			<p>
+				<a href="/produkty/">Produkty</a> &#x2192; 
+				{% if produkt.producent != empty %}
+					<a href="{{ produkt.producent | url_for_producent }}">{{ produkt.producent.nazwa }}</a> &#x2192; 
+				{% endif %}
+				{% if produkt.kategoria != empty %}
+					<a href="{{ produkt.kategoria | url_for_kategoria }}">{{ produkt.kategoria.nazwa }}</a> &#x2192; 
+				{% endif %}
+				<b>{{ produkt.nazwa }}</b>
+			</p>
+			<div id="product-left">
+				<div id="product-image">
+					<a href="{{ produkt | img_url }}" rel="facebox" title="{{ product.title }}"><img src="{{ produkt | img_url: 'large' }}" alt="{{ produkt.nazwa }}" /></a>
+				</div>
+				<div class="clear"></div>
+				{% for zdjecie in produkt.zdjecia %}
+					<div class="product-images">
+						<a href="{{ zdjecie | img_url }} title="{{ produkt.nazwa }}" rel="facebox"><img src="{{ zdjecie | img_url: 'medium' }}" alt="{{ produkt.nazwa }}" /></a>
+					</div>
+				{% endfor %}
+			</div>
+			<div id="product-right">
+				<h1>{{ produkt.nazwa }}</h1>
+				{{ produkt.opis | textile }}
+				<form action="/cart/add" method="post">
+					<div id="product-variants">
+						<ul>
+							<li class="odd">
+								<input type="radio" name="id" />
+								<strong>Czarny 8 GB</strong>
+								 za <span class="bold-blue">845 zł</span>
+							</li>
+							<li class="odds">
+								<input type="radio" name="id" />
+								<strong>Czarny 8 GB</strong>
+								 za <span class="bold-blue">845 zł</span>
+							</li>
+						</ul>
+					</div>
+					<input type="image" src="/assets/purchase.png" name="add" value="Purchase" id="purchase" />
+					<a href="/cart"><img src="/assets/checkout.png" /></a>
+				</form>
+			</div>
+			
+
+	</div>
+</div>
+
+<div id="footer">
+	<div id="footer-fader">
+		<div class="container">
+			<div id="footer-right">
+				<a href="#">Mama</a>
+				<a href="#">Mama</a>
+				<a href="#">Mama</a>
+			</div>
+			<span id="footer-left">
+				Copyright &copy; {{ "now" | date: "%Y" }} <a href="/">{{ sklep.nazwa }}</a>. All Rights Reserved.<br />
+				Designed by <a href="http://sofamade.com">Sofamade</a>.
+			</span>
+		</div>
+	</div>
+</div>
+
+</body>
+</html>

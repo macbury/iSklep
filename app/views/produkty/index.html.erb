@@ -1,0 +1,43 @@
+<script type="text/javascript" charset="utf-8">
+	
+	var flobu ;
+	
+	$(function(){
+		flobu = new flower_bubble ({
+			base_obj: $( '#produkty' ),
+			base_dir: '/images/',
+			background: { css: 'white', opacity: 0.78 },
+			bubble: { image: 'bubble.png', width: 130, height: 98 },
+			flower: { image: 'flower.gif', width: 32, height: 32 },
+			block_mode: 'base_obj'
+		}) ;
+	}) ;
+	
+</script>
+<%= produkty_submenu %>
+<div class="content">
+	<table id="produkty" style="margin-top: 5px">
+		<thead>
+			<th width="34px"></th>
+	    <th><a href="#">Nazwa</a></th>
+	    <th width="150px">Kategoria</th>
+	    <th width="125px">Producent</th>
+			<th width="120px">Akcje</th>
+		</thead>
+	
+	<% if @produkty.empty? %>
+		<tr>
+			<td colspan="5" class="info">Brak produktów!</td>
+		</tr>
+	<% end %>
+	<% for produkt in @produkty %>
+	  <tr id="<%= "produkt_#{produkt.id}" %>">
+			<td class="icon"><%= image_preview produkt.zdjecie %></a></td>
+	    <td><%= link_to produkt.nazwa, edit_produkt_path(produkt) %></td>
+	    <td><%= kategoria_for_produkt produkt %></td>
+	    <td><%= producent(produkt) %></td>
+			<td><%= link_to_remote_delete produkt %></td>
+	  </tr>
+	<% end %>
+	</table>
+</div>

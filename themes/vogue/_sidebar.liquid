@@ -1,0 +1,28 @@
+<div id="layout-right">	
+	<h3>Najczęściej kupowane</h3>
+	<ul id="featuring">
+		{% for produkt in sklep.najczesciej_kupowane %}
+		<li class="featuring-list">
+			<div class="featuring-image">
+				<a href="{{ produkt | url_for_produkt }}" title="{{ produkt.nazwa }}"><img src="{{ produkt | img_url: 'mini' }}" alt="{{ produkt.nazwa }}" /></a>
+			</div>
+			<div class="featuring-info">
+				<a href="{{ produkt | url_for_produkt }}">{{ produkt.nazwa }}</a><br />
+				<small><span class="light">od</span> 400 zł</small>
+			</div>
+		</li>
+		{% endfor %}
+	</ul>
+	<h3>Kategorie</h3>
+	<ul id="collections">
+		{% for kategoria in sklep.kategorie %}
+		<li><a href="{{ kategoria | url_for_kategoria }}">{{ kategoria.nazwa }}</a></li>
+		{% endfor %}
+	</ul>
+	<h3>Producenci</h3>
+	<ul id="collections">
+		{% for producent in sklep.producenci %}
+		<li><a href="{{ producent | url_for_producent }}">{{ producent.nazwa }}</a></li>
+		{% endfor %}
+	</ul>
+</div>

@@ -1,0 +1,17 @@
+<%= produkty_submenu %>
+<div class="content">
+	<h1>Nowy producent</h1>
+
+	<% form_for(@producent) do |f| %>
+	  <%= f.error_messages %>
+		<p>
+	    <%= f.label :nazwa %><br />
+	    <%= f.text_field :nazwa %>
+	  </p>
+
+	  <p>
+	    <%= f.submit "Zapisz" %> 
+			<%= link_to('Usuń', @producent, :confirm => 'Czy jesteś pewien?', :method => :delete) unless @producent.new_record? %>
+	  </p>
+	<% end %>
+</div>

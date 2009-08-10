@@ -1,0 +1,8 @@
+<% fields_for_zdjecie zdjecie do | zdjecie_form | %>
+	<p<%= ' style="padding-left: 36px"' if zdjecie.new_record? %>>
+		<%= image_preview zdjecie.zdjecie unless zdjecie.new_record? %>
+		<%= zdjecie_form.label :zdjecie %>
+		<%= zdjecie_form.file_field :zdjecie %>
+		<%= link_to_function 'Usuń', '$(this).parent().remove();' %>
+	</p>
+<% end %>

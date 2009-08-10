@@ -1,0 +1,14 @@
+<%= produkty_submenu %>
+<div class="content">
+	<h1>Producenci <%= admin_button 'Dodaj producenta', new_producent_path %></h1>
+
+	<% if @producenci.empty? %>
+		<p class="info">Brak producentów!</p>
+	<% else %>
+	<ul id="kategorie">
+		<% for producent in @producenci %>
+		<li><%= link_to producent.nazwa, edit_producent_path(producent) %></li>
+		<% end %>
+	</ul>
+	<% end %>
+</div>

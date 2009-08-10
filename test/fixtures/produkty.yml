@@ -1,0 +1,15 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  nazwa: MyString
+  opis: MyText
+  kategoria_id: 1
+  cena: 1.5
+  producent_id: 1
+
+two:
+  nazwa: MyString
+  opis: MyText
+  kategoria_id: 1
+  cena: 1.5
+  producent_id: 1

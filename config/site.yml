@@ -1,0 +1,11 @@
+--- 
+informacje: !map:HashWithIndifferentAccess 
+  wojewodztwo: "\xC5\x9Bwi\xC4\x99tokrzyskie"
+  adres: ul. Klonowa 24
+  miasto: "Skar\xC5\xBCysko-Kamienna"
+strona: !map:HashWithIndifferentAccess 
+  opis: Najlepsze odtwarzacze mp3 w sieci!
+  slogan: najlepsze odtwarzacze mp3,mp3 w sieci!
+  nazwa: mp3site
+  slowa_kluczowe: odtwarzacze, mp3, mp4
+  skorka: vogue
